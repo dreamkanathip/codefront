@@ -6,8 +6,18 @@ import {
   CarryOutOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
-import { Button, DatePicker, Form, Select, Breadcrumb, Avatar } from "antd";
+import {
+  Button,
+  DatePicker,
+  Form,
+  Select,
+  Breadcrumb,
+  Avatar,
+  Input,
+} from "antd";
 import dayjs from "dayjs";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface IForm {
   name: string;
@@ -16,9 +26,13 @@ interface IForm {
   dateTime: string;
 }
 const Body = () => {
+  const navigate = useNavigate();
   const onFinish = (values: IForm) => {
     const dateString = dayjs(values.dateTime).toString();
+    const data = { ...values, dateTime: dateString };
     console.log("Success:", { ...values, dateTime: dateString });
+    axios.post(`http://localhost:8080/appointment`, data);
+    navigate("/recordappointment");
   };
 
   return (
@@ -72,19 +86,13 @@ const Body = () => {
             autoComplete="off"
           >
             <Form.Item label="ชื่อผู้ป่วย" className="tabpa" name="name">
-              <Select>
-                <Select.Option value="demo">Demo</Select.Option>
-              </Select>
+              <Input />
             </Form.Item>
             <Form.Item label="แพทย์ผู้นัด" className="tabdent" name="doctor">
-              <Select>
-                <Select.Option value="demo">Demo</Select.Option>
-              </Select>
+              <Input />
             </Form.Item>
             <Form.Item label="เหตุที่นัด" className="tabprob" name="problem">
-              <Select>
-                <Select.Option value="demo">Demo</Select.Option>
-              </Select>
+              <Input />
             </Form.Item>
             <Form.Item label="วันนัดหมาย" className="tabdate" name="dateTime">
               <DatePicker />

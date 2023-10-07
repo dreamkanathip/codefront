@@ -6,107 +6,98 @@ import {
   CarryOutOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
-import { Button, Breadcrumb, Avatar, Tag, Space, Table } from "antd";
+import { Button, Breadcrumb, Avatar, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
-interface DataType {
-  key: string;
+import axios from "axios";
+interface Data {
   name: string;
-  dentname: string;
+  doctor: string;
   problem: string;
-  dob: string;
+  dateTime: string;
 }
 
-const columns: ColumnsType<DataType> = [
-  {
-    title: "ชื่อ-นามสกุล",
-    dataIndex: "name",
-    key: "name",
-    render: (
-      text:
-        | string
-        | number
-        | boolean
-        | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-        | Iterable<React.ReactNode>
-        | React.ReactPortal
-        | null
-        | undefined
-    ) => <a>{text}</a>,
-  },
-  {
-    title: "แพทย์ผู้นัด",
-    dataIndex: "dentname",
-    key: "dentname",
-    render: (
-      text:
-        | string
-        | number
-        | boolean
-        | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-        | Iterable<React.ReactNode>
-        | React.ReactPortal
-        | null
-        | undefined
-    ) => <a>{text}</a>,
-  },
-  {
-    title: "เหตุที่นัด",
-    dataIndex: "problem",
-    key: "problem",
-    render: (
-      text:
-        | string
-        | number
-        | boolean
-        | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-        | Iterable<React.ReactNode>
-        | React.ReactPortal
-        | null
-        | undefined
-    ) => <a>{text}</a>,
-  },
-  {
-    title: "วัน-เวลา",
-    dataIndex: "dob",
-    key: "dob",
-    render: (
-      text:
-        | string
-        | number
-        | boolean
-        | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-        | Iterable<React.ReactNode>
-        | React.ReactPortal
-        | null
-        | undefined
-    ) => <a>{text}</a>,
-  },
-];
-
-const data: DataType[] = [
-  {
-    key: "1",
-    name: "",
-    dentname: "",
-    problem: "",
-    dob: "",
-  },
-  {
-    key: "2",
-    name: "",
-    dentname: "",
-    problem: "",
-    dob: "",
-  },
-  {
-    key: "3",
-    name: "",
-    dentname: "",
-    problem: "",
-    dob: "",
-  },
-];
 function ShowRecord() {
+  const [data, setData] = React.useState([
+    {
+      dateTime: "",
+      doctor: "",
+      name: "",
+      problem: "",
+    },
+  ]);
+
+  React.useEffect(() => {
+    axios
+      .get("http://localhost:8080/appointments")
+      .then((res) => setData(res.data));
+  }, []);
+
+  const columns: ColumnsType<Data> = [
+    {
+      title: "ชื่อ-นามสกุล",
+      dataIndex: "name",
+      key: "name",
+      render: (
+        text:
+          | string
+          | number
+          | boolean
+          | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+          | Iterable<React.ReactNode>
+          | React.ReactPortal
+          | null
+          | undefined
+      ) => <a>{text}</a>,
+    },
+    {
+      title: "แพทย์ผู้นัด",
+      dataIndex: "doctor",
+      key: "doctor",
+      render: (
+        text:
+          | string
+          | number
+          | boolean
+          | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+          | Iterable<React.ReactNode>
+          | React.ReactPortal
+          | null
+          | undefined
+      ) => <a>{text}</a>,
+    },
+    {
+      title: "เหตุที่นัด",
+      dataIndex: "problem",
+      key: "problem",
+      render: (
+        text:
+          | string
+          | number
+          | boolean
+          | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+          | Iterable<React.ReactNode>
+          | React.ReactPortal
+          | null
+          | undefined
+      ) => <a>{text}</a>,
+    },
+    {
+      title: "วัน-เวลา",
+      dataIndex: "dateTime",
+      key: "dateTime",
+      render: (
+        text:
+          | string
+          | number
+          | boolean
+          | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+          | Iterable<React.ReactNode>
+          | React.ReactPortal
+          | null
+          | undefined
+      ) => <a>{text}</a>,
+    },
+  ];
   return (
     <div>
       <nav className="logout">
