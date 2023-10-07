@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.logout {
+  width: auto;
+  height: 48px;
+  background-color: #010080;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+.system {
+  color: white;
+}
+.button {
+  color: white;
+}
+.box {
+  margin-top: 33px;
+  margin-left: 400px;
+  width: 720px;
+  height: 400px;
+  border-radius: 10px;
+  border: solid #100080;
+  padding: 0 1rem;
+  justify-content: center;
+}
+.tab {
+  margin-top: 50px;
+}
+.tabdent {
+  margin-bottom: 40px;
+  margin-left: 3.5px;
+}
+.tabpa {
+  margin-bottom: 40px;
+  margin-left: 16.5px;
+}
+
+.tabprob {
+  margin-bottom: 40px;
+  margin-left: 16px;
+}
+
+.tabdate {
+  margin-left: 2px;
+  margin-bottom: 40px;
+}
+.buttonSub {
+  margin-left: 615px;
+}
+.web {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 0 1rem;
+  border-bottom: 1px solid gainsboro;
+}
+.footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gainsboro;
+}
+.icon {
+  padding: 0 0.2rem;
+}
+.tabText {
+  height: auto;
+  width: 230px;
+  margin-top: 40px;
+  margin-left: 285px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.tabava {
+  list-style: none;
+  display: flex;
+  gap: 0.3rem;
+}
+.recbox {
+  margin-top: 33px;
+  margin-left: 400px;
+  width: 740px;
+  height: 300px;
+  border-radius: 10px;
+  border: solid #100080;
+  justify-content: center;
+}
